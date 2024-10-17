@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SigninForm extends StatefulWidget {
+class SignupForm extends StatefulWidget {
   @override
-  _SigninFormState createState() => _SigninFormState();
+  _SignupFormState createState() => _SignupFormState();
 }
 
-class _SigninFormState extends State<SigninForm> {
+class _SignupFormState extends State<SignupForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
@@ -43,12 +43,12 @@ class _SigninFormState extends State<SigninForm> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // If the form is valid, you can process the Signin logic
+      // If the form is valid, you can process the Signup logic
       final email = _emailController.text;
       final password = _passwordController.text;
       print('Email: $email');
       print('Password: $password');
-      // Implement Signin functionality here
+      // Implement Signup functionality here
     }
   }
 
@@ -85,7 +85,7 @@ class _SigninFormState extends State<SigninForm> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Signin'),
+                child: Text('Signup'),
               ),
             ),
           ],
