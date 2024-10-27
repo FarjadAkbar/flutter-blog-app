@@ -1,18 +1,27 @@
 import 'package:flutter/material.dart';
 
-class SignupForm extends StatefulWidget {
+class SigninScreen extends StatelessWidget {
   @override
-  _SignupFormState createState() => _SignupFormState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Sign In')),
+      body: SigninForm(),
+    );
+  }
 }
 
-class _SignupFormState extends State<SignupForm> {
+class SigninForm extends StatefulWidget {
+  @override
+  _SigninFormState createState() => _SigninFormState();
+}
+
+class _SigninFormState extends State<SigninForm> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
 
   @override
   void dispose() {
-    // Clean up the controllers when the widget is disposed
     _passwordController.dispose();
     _emailController.dispose();
     super.dispose();
@@ -22,7 +31,6 @@ class _SignupFormState extends State<SignupForm> {
     if (value == null || value.isEmpty) {
       return 'Please enter your email';
     }
-    // Basic email pattern check
     final emailPattern = r'^[^@]+@[^@]+\.[^@]+';
     final regExp = RegExp(emailPattern);
     if (!regExp.hasMatch(value)) {
@@ -43,12 +51,11 @@ class _SignupFormState extends State<SignupForm> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      // If the form is valid, you can process the Signup logic
       final email = _emailController.text;
       final password = _passwordController.text;
       print('Email: $email');
       print('Password: $password');
-      // Implement Signup functionality here
+      Navigator.pushReplacementNamed(context, '/blogs');
     }
   }
 
@@ -85,7 +92,7 @@ class _SignupFormState extends State<SignupForm> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: _submitForm,
-                child: Text('Signup'),
+                child: Text('Signin'),
               ),
             ),
           ],
